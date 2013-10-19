@@ -2,7 +2,9 @@ FORGE
   remote: http://forge.puppetlabs.com/
   specs:
     puppetlabs/stdlib (4.1.0)
+    saz/vim (2.0.1)
 
 DEPENDENCIES
   puppetlabs/stdlib (~> 4.0)
+  saz/vim (>= 0)
 
