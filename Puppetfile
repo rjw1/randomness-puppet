@@ -2,6 +2,7 @@ forge 'http://forge.puppetlabs.com/'
 
 mod 'puppetlabs/stdlib', '~> 4.0'
 mod 'saz/vim'
+mod 'saz/sudo'
 mod 'puppetlabs/git'
 mod 'torrancew/account'
 mod 'nano',

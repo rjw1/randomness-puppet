@@ -3,6 +3,7 @@ FORGE
   specs:
     puppetlabs/git (0.0.3)
     puppetlabs/stdlib (4.1.0)
+    saz/sudo (2.2.0)
     saz/vim (2.0.1)
     torrancew/account (0.0.5)
 
@@ -17,6 +18,7 @@ DEPENDENCIES
   nano (>= 0)
   puppetlabs/git (>= 0)
   puppetlabs/stdlib (~> 4.0)
+  saz/sudo (>= 0)
   saz/vim (>= 0)
   torrancew/account (>= 0)
 
