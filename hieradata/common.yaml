@@ -3,6 +3,10 @@ classes:
   - vim
   - nano::must::die
   - git
+  - sudo
+sudo_conf:
+  sudo_group:
+    content: '%sudo ALL=(ALL) NOPASSWD:ALL'
 accounts:
   bob:
     comment: 'bob walker'
