@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # make sure modules are installed.
 bundle exec librarian-puppet install
