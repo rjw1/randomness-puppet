@@ -2,6 +2,10 @@
 # script to apply a puppet repo
 set -e
 
+# We need bundler installed for everything else to work.
+# its deps are also everything else we need.
+apt-get install bundler -y -qq
+
 # make sure we have gems installed
 bundle install --deployment
 
