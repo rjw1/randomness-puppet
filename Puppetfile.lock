@@ -4,6 +4,7 @@ FORGE
     puppetlabs/git (0.0.3)
     puppetlabs/stdlib (4.1.0)
     saz/vim (2.0.1)
+    torrancew/account (0.0.5)
 
 GIT
   remote: git://github.com/rjw1/puppet-nano.git
@@ -17,4 +18,5 @@ DEPENDENCIES
   puppetlabs/git (>= 0)
   puppetlabs/stdlib (~> 4.0)
   saz/vim (>= 0)
+  torrancew/account (>= 0)
 
