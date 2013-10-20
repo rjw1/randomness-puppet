@@ -2,3 +2,4 @@
 classes:
   - vim
   - nano::must::die
+  - git
