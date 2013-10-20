@@ -1,6 +1,8 @@
 FORGE
   remote: http://forge.puppetlabs.com/
   specs:
+    attachmentgenie/ssh (1.2.1)
+      puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/git (0.0.3)
     puppetlabs/stdlib (4.1.0)
     saz/sudo (2.2.0)
@@ -15,6 +17,7 @@ GIT
     nano (0.0.1)
 
 DEPENDENCIES
+  attachmentgenie/ssh (>= 0)
   nano (>= 0)
   puppetlabs/git (>= 0)
   puppetlabs/stdlib (~> 4.0)
