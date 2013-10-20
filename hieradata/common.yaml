@@ -4,6 +4,8 @@ classes:
   - nano::must::die
   - git
   - sudo
+  - ssh::server
+  - ssh::client
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
@@ -15,3 +17,5 @@ accounts:
       - users
       - adm
     ssh_key: AAAAB3NzaC1yc2EAAAABIwAAAQEAwpdgjfdeiN5V+7JyrMViDxPrQXu8U3Q8Fp25d3nC3WfKiLu9PumnMifblw+41T87av+dS+DueGXHyVmt68BfXr7ujC6yveFI+AKk21mcCUBDxVTi4HMXX0rtuFscJWdXj9z6FeBZ1PtOJE1swDzz0/znloZCTtib4TL5oCnG/rm+giPvwj9kNF7JxPZBeV6BqhVo5DM+Y7tYw63/NBc2EaQvFEy4oECVg9VZRpbL/JK7ZEHAkYBZ4kEMVSM3mci8rgxA723/8LBD+GoVWBCRFYqT5lE1QXNWnHu34mkvJTQ+CyudmwDk2X2anQCws9xER0neD+w7XTtyrbDKM9RuNQ==
+
+ssh::server::allowed_users: ['bob']
