@@ -2,6 +2,9 @@
 # script to apply a puppet repo
 set -e
 
+# make sure we have gems installed
+bundle install
+
 # make sure modules are installed.
 bundle exec librarian-puppet install
 
