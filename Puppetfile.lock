@@ -3,6 +3,8 @@ FORGE
   specs:
     attachmentgenie/ssh (1.2.1)
       puppetlabs/stdlib (>= 2.2.1)
+    attachmentgenie/ufw (1.2.0)
+      puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/git (0.0.3)
     puppetlabs/stdlib (4.1.0)
     saz/sudo (2.2.0)
@@ -39,6 +41,7 @@ GIT
 
 DEPENDENCIES
   attachmentgenie/ssh (>= 0)
+  attachmentgenie/ufw (>= 0)
   bobs_config (>= 0)
   cpanm (>= 0)
   nano (>= 0)

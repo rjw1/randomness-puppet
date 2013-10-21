@@ -6,6 +6,7 @@ mod 'saz/sudo'
 mod 'puppetlabs/git'
 mod 'torrancew/account'
 mod 'attachmentgenie/ssh'
+mod 'attachmentgenie/ufw'
 mod 'nano',
   :git => 'git://github.com/rjw1/puppet-nano.git'
 mod 'bobs_config',
