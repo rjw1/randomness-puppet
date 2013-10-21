@@ -10,6 +10,13 @@ FORGE
     torrancew/account (0.0.5)
 
 GIT
+  remote: git://github.com/rjw1/puppet-bobs_config.git
+  ref: master
+  sha: 5b7accbe997fa30a285bac1acdcfe0314e8e7175
+  specs:
+    bobs_config (0.0.1)
+
+GIT
   remote: git://github.com/rjw1/puppet-nano.git
   ref: master
   sha: 20eb3fc842709740601a63d179f425d40e279b0a
@@ -18,6 +25,7 @@ GIT
 
 DEPENDENCIES
   attachmentgenie/ssh (>= 0)
+  bobs_config (>= 0)
   nano (>= 0)
   puppetlabs/git (>= 0)
   puppetlabs/stdlib (~> 4.0)

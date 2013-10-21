@@ -6,6 +6,7 @@ classes:
   - sudo
   - ssh::server
   - ssh::client
+  - bobs_config
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
