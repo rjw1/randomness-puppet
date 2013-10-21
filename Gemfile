@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 # advisable to pin major versions in this Gemfile.
 
 # Puppet core.
-gem 'puppet', ENV['PUPPET_VERSION'] || '~> 3.1.0'
-gem 'facter', ENV['FACTER_VERSION'] || '~> 1.6.0'
+gem 'puppet', ENV['PUPPET_VERSION'] || '~> 3.3.0'
+gem 'facter', ENV['FACTER_VERSION'] || '~> 1.7.0'
 
 # Dependency management.
 gem 'librarian-puppet-maestrodev', '~> 0.9.0'
