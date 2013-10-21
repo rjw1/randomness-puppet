@@ -23,10 +23,18 @@ GIT
   specs:
     nano (0.0.1)
 
+GIT
+  remote: git://github.com/rjw1/puppet-perl_local_lib.git
+  ref: master
+  sha: 2c5feca6aec34c5f09fc8d78a8917236ba74545d
+  specs:
+    perl_local_lib (0.0.1)
+
 DEPENDENCIES
   attachmentgenie/ssh (>= 0)
   bobs_config (>= 0)
   nano (>= 0)
+  perl_local_lib (>= 0)
   puppetlabs/git (>= 0)
   puppetlabs/stdlib (~> 4.0)
   saz/sudo (>= 0)
