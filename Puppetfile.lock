@@ -30,9 +30,17 @@ GIT
   specs:
     perl_local_lib (0.0.1)
 
+GIT
+  remote: git://github.com/torrancew/puppet-cpanm.git
+  ref: master
+  sha: ffb0d139d6ada9ec0c683f534984fd187caa3844
+  specs:
+    cpanm (0.0.1)
+
 DEPENDENCIES
   attachmentgenie/ssh (>= 0)
   bobs_config (>= 0)
+  cpanm (>= 0)
   nano (>= 0)
   perl_local_lib (>= 0)
   puppetlabs/git (>= 0)

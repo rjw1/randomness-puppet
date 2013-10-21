@@ -8,6 +8,7 @@ classes:
   - ssh::client
   - bobs_config
   - perl_local_lib
+  - cpanm
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
