@@ -10,6 +10,7 @@ classes:
   - perl_local_lib
   - cpanm
   - ufw
+  - timezone
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
