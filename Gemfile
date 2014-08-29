@@ -5,15 +5,15 @@ source 'https://rubygems.org'
 # advisable to pin major versions in this Gemfile.
 
 # Puppet core.
-gem 'puppet', ENV['PUPPET_VERSION'] || '~> 3.3.0'
-gem 'facter', ENV['FACTER_VERSION'] || '~> 1.7.0'
+gem 'puppet', ENV['PUPPET_VERSION'] || '~> 3.6.0'
+gem 'facter', ENV['FACTER_VERSION'] || '~> 2.2.0'
 
 # Dependency management.
-gem 'librarian-puppet-maestrodev', '~> 0.9.0'
+gem 'librarian-puppet'
 
 # Testing utilities.
 gem 'rake'
 gem 'puppet-syntax'
-gem 'puppet-lint', '~> 0.3.0'
-gem 'rspec-puppet', '~> 0.1.0'
-gem 'puppetlabs_spec_helper', '~> 0.4.0'
+gem 'puppet-lint'
+gem 'rspec-puppet'
+gem 'puppetlabs_spec_helper'
