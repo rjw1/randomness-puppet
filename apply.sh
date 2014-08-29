@@ -4,6 +4,7 @@ set -e
 
 # We need bundler installed for everything else to work.
 # its deps are also everything else we need on Ubuntu 13.10 at least.
+sudo apt-get update
 sudo apt-get install bundler -y -qq
 
 # need to install git so that librarian-puppet can install modules via git.
