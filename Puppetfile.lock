@@ -1,5 +1,5 @@
 FORGE
-  remote: http://forge.puppetlabs.com/
+  remote: http://forgeapi.puppetlabs.com/
   specs:
     attachmentgenie/ssh (1.2.1)
       puppetlabs/stdlib (>= 2.2.1)
