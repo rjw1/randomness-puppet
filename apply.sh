@@ -20,4 +20,4 @@ bundle exec librarian-puppet install
 bundle exec rake
 
 # apply stuff
-sudo bundle exec puppet apply --hiera_config=hiera.yaml --modulepath=modules:vendor/modules manifests/site.pp
+sudo bundle exec puppet apply --hiera_config=hiera.yaml --modulepath=modules:vendor/modules manifests
