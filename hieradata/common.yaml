@@ -34,6 +34,8 @@ accounts:
       - adm
     ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC+6ZJ5fIUQAiLoyRjqig7x2Bm3m98zG6f0ogqsbQuDjz3PmxFUYciYjiLgqQOzUjSHL6xwBJqxFU7ap7QDyQEYACgdb6bpIsD0tGBKNaC/Yw1z5Lvm1AO3vuoURI5e0nH1XehNkl8Nmxq08WHPhcBH6+QAzlS2eue0NMZfW4j+Ami7KnbBID1j0Oe2zvxJ+7/ow6p4PH8pzK6fYpNNB6dDwwDyT6H1j2chhN0OJSsUsUAOmyM3piHbvQDBzvBDeWkdjMdXqhvqwCDuI+ErfPLGV1CyGGxmj6cEFEIVsE5chn8yjPFKaIttHjFH8Z4mgGngVh4NXFP2OaVUUMX5N1AP
 
+apache::purge_configs: false
+
 ssh::server::allowed_users: ['bob','kake']
 
 ufw_allow:
