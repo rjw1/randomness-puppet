@@ -7,6 +7,8 @@ source 'https://rubygems.org'
 # Puppet core.
 gem 'puppet', ENV['PUPPET_VERSION'] || '~> 3.6.0'
 gem 'facter', ENV['FACTER_VERSION'] || '~> 2.2.0'
+gem 'hiera'
+gem 'deep_merge'
 
 # Dependency management.
 gem 'librarian-puppet'
