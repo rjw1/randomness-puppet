@@ -2,3 +2,5 @@
 accounts:
   lb:
     comment: 'london bookshops'
+  lv:
+    comment: 'london vegetarian'
