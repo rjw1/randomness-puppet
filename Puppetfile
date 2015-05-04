@@ -7,6 +7,8 @@ mod 'saz/timezone'
 mod 'puppetlabs/git'
 mod 'torrancew/account'
 mod 'attachmentgenie/ssh'
+mod 'puppetlabs/mysql'
+mod 'puppetlabs/apache'
 mod 'rjw1/ufw',
   :git => 'git://github.com/rjw1/attachmentgenie-ufw.git',
   :ref => 'ada681d'

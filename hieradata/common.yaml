@@ -11,6 +11,8 @@ classes:
   - cpanm
   - ufw
   - timezone
+  - mysql::server
+  - apache
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
