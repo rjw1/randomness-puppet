@@ -41,12 +41,9 @@ ufw_allow:
   allow-ssh-from-home-ipv6:
     port: '22'
     from: '2001:8b0:ca94:869f::/64'
-    ip: '2a03:b0c0:1:d0::dc:b001'
-  allow-ssh-from-nimbus:
-    port: '22'
-    from: '46.37.32.131'
+    ip: '2001:41c8:51:945::69/64'
   allow-http:
     port: '80'
   allow-http-ipv6:
     port: '80'
-    ip: '2a03:b0c0:1:d0::dc:b001'
+    ip: '2001:41c8:51:945::69/64'
