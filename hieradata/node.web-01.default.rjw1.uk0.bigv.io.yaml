@@ -4,3 +4,5 @@ accounts:
     comment: 'london bookshops'
   lv:
     comment: 'london vegetarian'
+  pubology:
+    comment: 'pubology'
