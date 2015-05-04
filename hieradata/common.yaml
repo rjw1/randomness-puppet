@@ -24,8 +24,15 @@ accounts:
       - users
       - adm
     ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDEh7U1DlU9H1sWzzpuld/ifHPGTNJkawI/5UJmLWkZjkTbwtIMyoFi5QWtkloKVEQQCjCIHwW5+hgVzZmD63uXBYhQBJmQ2wuTlcyTIUhOtZ6RW8/nYmZm/Ty0hi1iYYKUrZRZFTxpt38VMk1VNEwYQ9BBK00GsJkExKktJLmGsmmC1wfoQrsl9bYwwkvenD9RreMVAO80pnPrvYxy9eJpXY3nC+MT7zIOLiN9XQ2BpBpGH5dLw2P/zRENDxv48GCz6bllTO21q5iRMgwwSfGh65mANHXDsHQgau/BnmSulFlcOczG5dhscT6GGG8yx2i9iiWuySbV2BfiuWjTzzq3
+  kake:
+    comment: 'Kake Pugh'
+    groups:
+      - sudo
+      - users
+      - adm
+    ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC+6ZJ5fIUQAiLoyRjqig7x2Bm3m98zG6f0ogqsbQuDjz3PmxFUYciYjiLgqQOzUjSHL6xwBJqxFU7ap7QDyQEYACgdb6bpIsD0tGBKNaC/Yw1z5Lvm1AO3vuoURI5e0nH1XehNkl8Nmxq08WHPhcBH6+QAzlS2eue0NMZfW4j+Ami7KnbBID1j0Oe2zvxJ+7/ow6p4PH8pzK6fYpNNB6dDwwDyT6H1j2chhN0OJSsUsUAOmyM3piHbvQDBzvBDeWkdjMdXqhvqwCDuI+ErfPLGV1CyGGxmj6cEFEIVsE5chn8yjPFKaIttHjFH8Z4mgGngVh4NXFP2OaVUUMX5N1AP
 
-ssh::server::allowed_users: ['bob']
+ssh::server::allowed_users: ['bob','kake']
 
 ufw_allow:
   allow-ssh-from-home:
