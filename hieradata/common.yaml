@@ -11,10 +11,6 @@ classes:
   - cpanm
   - ufw
   - timezone
-  - mysql::server
-  - apache
-  - apache::mod::userdir
-  - apache::mod::rewrite
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
@@ -43,12 +39,12 @@ ufw_allow:
   allow-ssh-from-home:
     port: '22'
     from: '81.187.166.218'
-  allow-ssh-from-home-ipv6:
-    port: '22'
-    from: '2001:8b0:ca94:869f::/64'
-    ip: '2001:41c8:51:945::69/64'
   allow-http:
     port: '80'
   allow-http-ipv6:
     port: '80'
     ip: '2001:41c8:51:945::69/64'
+
+base_packages:
+  - iftop
+  - dstat

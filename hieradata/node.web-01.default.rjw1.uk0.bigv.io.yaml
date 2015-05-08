@@ -1,4 +1,10 @@
 ---
+classes:
+  - mysql::server
+  - apache
+  - apache::mod::userdir
+  - apache::mod::rewrite
+
 accounts:
   lb:
     comment: 'london bookshops'
@@ -8,3 +14,9 @@ accounts:
     comment: 'pubology'
   lc:
     comment: 'london crafts'
+
+ufw_allow:
+  allow-ssh-from-home-ipv6:
+    port: '22'
+    from: '2001:8b0:ca94:869f::/64'
+    ip: '2001:41c8:51:945::69/64'
