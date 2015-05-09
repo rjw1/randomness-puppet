@@ -47,3 +47,7 @@ ufw_allow:
   allow-http-ipv6:
     port: '80'
     ip: '2001:41c8:51:945::69/64'
+
+base_packages:
+  - iftop
+  - dstat
