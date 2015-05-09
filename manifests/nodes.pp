@@ -7,4 +7,6 @@ node default {
   create_resources('sudo::conf', $sudo_conf)
   $ufw_allow = hiera_hash('ufw_allow')
   create_resources('ufw::allow', $ufw_allow)
+  $base_packages = hiera_array('base_packages')
+  ensure_packages($base_packages)
 }
