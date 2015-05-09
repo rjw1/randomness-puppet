@@ -11,10 +11,6 @@ classes:
   - cpanm
   - ufw
   - timezone
-  - mysql::server
-  - apache
-  - apache::mod::userdir
-  - apache::mod::rewrite
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
