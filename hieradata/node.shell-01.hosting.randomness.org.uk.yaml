@@ -4,3 +4,7 @@ ufw_allow:
   allow-ssh-from-anywhere:
     port: '22'
     from: 'any'
+
+base_packages:
+  - alpine
+  - irssi
