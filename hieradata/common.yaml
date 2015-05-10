@@ -51,3 +51,4 @@ ufw_allow:
 base_packages:
   - iftop
   - dstat
+  - gpgv2
