@@ -8,12 +8,16 @@ classes:
 accounts:
   lb:
     comment: 'london bookshops'
+    home_dir_perms: '0755'
   lv:
     comment: 'london vegetarian'
+    home_dir_perms: '0755'
   pubology:
     comment: 'pubology'
+    home_dir_perms: '0755'
   lc:
     comment: 'london crafts'
+    home_dir_perms: '0755'
 
 ufw_allow:
   allow-ssh-from-home-ipv6:
