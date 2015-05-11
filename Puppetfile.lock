@@ -34,7 +34,7 @@ GIT
 GIT
   remote: git://github.com/rjw1/puppet-bobs_config.git
   ref: master
-  sha: 5b7accbe997fa30a285bac1acdcfe0314e8e7175
+  sha: 3493129797e9b6dbf5dec18221a4dde2e5dac9a2
   specs:
     rjw1-bobs_config (0.0.1)
 
