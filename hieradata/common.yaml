@@ -42,6 +42,9 @@ ufw_allow:
   allow-ssh-from-gertie:
     port: '22'
     from: '89.16.172.72'
+  allow-ssh-from-shell-01:
+    port: '22'
+    from: '46.101.54.97'
   allow-http:
     port: '80'
   allow-http-ipv6:
