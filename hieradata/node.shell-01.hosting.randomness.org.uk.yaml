@@ -12,3 +12,7 @@ ufw_allow:
 base_packages:
   - alpine
   - irssi
+
+accounts:
+  workbob:
+    comment: 'bob walker'
