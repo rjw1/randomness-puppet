@@ -4,6 +4,7 @@ classes:
   - apache
   - apache::mod::userdir
   - apache::mod::rewrite
+  - automysqlbackup
 
 accounts:
   lb:
@@ -28,3 +29,12 @@ ufw_allow:
     port: '22'
     from: '2a03:b0c0:1:d0::dc:b001/64'
     ip: '2001:41c8:51:945::69/64'
+
+automysqlbackup::config:
+  'databases':
+     mysql_dump_use_separate_dirs: 'yes'
+     db_exclude:
+       - mysql
+       - information_schema
+       - performance_schema
+       - test
