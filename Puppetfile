@@ -5,6 +5,7 @@ mod 'saz/vim'
 mod 'saz/sudo'
 mod 'saz/timezone'
 mod 'puppetlabs/git'
+mod 'nextrevision/automysqlbackup'
 mod 'torrancew/account',
   :git => 'git://github.com/torrancew/puppet-account',
   :ref => '1491bd378ac0ac7ae22cd4bd8c29bb19f54d2f16'
