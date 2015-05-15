@@ -7,6 +7,10 @@ set -e
 sudo apt-get update
 sudo apt-get install bundler -y -qq
 
+# We need ruby-dev and build-essential to build the json gem
+sudo apt-get install ruby-dev -y -qq
+sudo apt-get install build-essential -y -qq
+
 # need to install git so that librarian-puppet can install modules via git.
 sudo apt-get install git -y -qq
 
