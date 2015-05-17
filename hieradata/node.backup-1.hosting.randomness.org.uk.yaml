@@ -16,3 +16,20 @@ ufw_allow:
     port: '22'
     from: '2a03:b0c0:1:d0::dc:b001/64'
     ip: '2001:19f0:5000:8cc3:5400:ff:fe09:35da/64'
+  allow-ssh-from-web-01-ipv6:
+    port: '22'
+    from: '2001:41c8:51:945::69/64'
+    ip: '2001:19f0:5000:8cc3:5400:ff:fe09:35da/64'
+  allow-ssh-from-web-01:
+    port: '22'
+    from: '213.138.97.69'
+  allow-ssh-from-ashbrook-ipv6:
+    port: '22'
+    from: '2001:41c8:51:8f0::240/64'
+    ip: '2001:19f0:5000:8cc3:5400:ff:fe09:35da/64'
+  allow-ssh-from-ashbrook:
+    port: '22'
+    from: '213.138.114.240'
+  allow-ssh-from-gertie:
+    port: '22'
+    from: '89.16.172.72'
