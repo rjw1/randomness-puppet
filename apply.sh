@@ -4,7 +4,9 @@ set -e
 
 # We need bundler installed for everything else to work.
 # its deps are also everything else we need on Ubuntu 13.10 at least.
-sudo apt-get update
+echo "updating apt"
+sudo apt-get update -qq
+echo "installing needed packages"
 sudo apt-get install bundler -y -qq
 
 # We need ruby-dev and build-essential to build the json gem
@@ -15,13 +17,17 @@ sudo apt-get install build-essential -y -qq
 sudo apt-get install git -y -qq
 
 # make sure we have gems installed
-bundle install --deployment
+echo "bundle installing gems"
+bundle install --deployment --quiet
 
 # make sure modules are installed.
-bundle exec librarian-puppet install
+echo "installing puppet modules"
+bundle exec librarian-puppet install --quiet
 
 # run rake tasks
+echo "running puppet tests"
 bundle exec rake
 
 # apply stuff
+echo "running puppet"
 sudo bundle exec puppet apply $@ --verbose --hiera_config=hiera.yaml --modulepath=modules:vendor/modules manifests

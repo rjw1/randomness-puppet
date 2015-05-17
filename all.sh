@@ -4,6 +4,6 @@ set -e
 
 for host in `ls hieradata/node* | sed -e 's/^hieradata\/node\.//' -e 's/\.yaml$//'`
 do
-  echo $host $@
+  echo "Running on $host"
   ./bootstrap.sh $host $@
 done
