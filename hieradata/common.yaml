@@ -57,3 +57,4 @@ base_packages:
   - gpgv2
   - tmux
   - screen
+  - backup2l
