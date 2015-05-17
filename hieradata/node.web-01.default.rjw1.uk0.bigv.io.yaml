@@ -38,3 +38,4 @@ automysqlbackup::config:
        - information_schema
        - performance_schema
        - test
+     postbackup: '/usr/local/sbin/mysqlpostbackup.sh'
