@@ -29,6 +29,13 @@ ufw_allow:
     port: '22'
     from: '2a03:b0c0:1:d0::dc:b001/64'
     ip: '2001:41c8:51:945::69/64'
+  allow-ssh-from-the-ipv6:
+    port: '22'
+    from: '2001:41c8:10:b1f:c0ff:ee:15:900d/64'
+    ip: '2001:41c8:51:945::69/64'
+  allow-ssh-from-the:
+    port: '22'
+    from: '46.43.34.31'
 
 automysqlbackup::config:
   'databases':
