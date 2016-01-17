@@ -16,3 +16,9 @@ base_packages:
 accounts:
   workbob:
     comment: 'bob walker'
+  backup:
+    comment: 'backup user'
+    home_dir_perms: '0755'
+    ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDNnOqd36WCmx2A11pkl/j/axyS/+muWH4Is13vqQI7FcyL1OQM6+el5kZjpduOu1FSG1Ml8PwxRmOVSdaq1t+R66oyS0g3fcqEWTr0iUrq6xjxfe8W+0jj4aDj6YWfNI6kZt95+KDpHC4z9i8QP2o/sLoXdngP6saOSXvQkHSGfh2rVw5IK+sOIxUl3a4NZ9CTsDcY1LUN/Rn49Jsxk6HMVEUO6fShkPfEoTyxZJAEKdo0khlOkOqwaSPJMvnELbdNBeaNOppoKwFHSuapTo9OQpRcHYWGAhuj9r5wvNzXDVcwdGki7bCVZqoSMzhEk2SzRMUphvVthrpwnrv+p/L/
+
+ssh::server::allowed_users: ['bob','kake','backup']
