@@ -40,6 +40,7 @@ accounts:
 apache::purge_configs: false
 
 ssh::server::allowed_users: ['bob','kake']
+ssh::server::use_pam: 'yes'
 
 ufw_allow:
   allow-ssh-from-home:
