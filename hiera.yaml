@@ -1,9 +1,10 @@
-:hierarchy:
-  - "node.%{::clientcert}"
-  - "env.%{::environment}"
-  - common
-:backends:
-  - yaml
-:yaml:
-  :datadir: 'hieradata'
-:merge_behavior: deeper
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+hierarchy:
+  - name: "yaml data"
+    paths:
+      - "node.%{::clientcert}.yaml"
+      - "env.%{::environment}.yaml"
+      - "common.yaml"

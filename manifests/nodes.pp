@@ -1,12 +1,24 @@
 # Use hiera as a lightweight ENC.
 node default {
-  hiera_include('classes')
-  $accounts = hiera_hash('accounts')
+  lookup('classes', Array[String], 'unique').include
+  $accounts = lookup( { 'name'  => 'accounts',
+          'merge' => {
+            'strategy'        => 'deep',
+          },
+})
   create_resources('account', $accounts)
-  $sudo_conf = hiera('sudo_conf')
+  $sudo_conf = lookup('sudo_conf')
   create_resources('sudo::conf', $sudo_conf)
-  $ufw_allow = hiera_hash('ufw_allow')
+  $ufw_allow = lookup( { 'name' => 'ufw_allow',
+          'merge' => {
+            'strategy'        => 'deep',
+          },
+})
   create_resources('ufw::allow', $ufw_allow)
-  $base_packages = hiera_array('base_packages')
+  $base_packages = lookup( { 'name' => 'base_packages',
+          'merge' => {
+            'strategy'        => 'deep',
+          },
+})
   ensure_packages($base_packages)
 }
