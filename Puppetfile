@@ -1,6 +1,6 @@
 forge 'https://forgeapi.puppetlabs.com/'
 
-mod 'puppetlabs/stdlib', '~> 4.0'
+mod 'puppetlabs/stdlib'
 mod 'saz/vim'
 mod 'saz/sudo'
 mod 'saz/timezone'
@@ -8,7 +8,7 @@ mod 'puppetlabs/git'
 mod 'nextrevision/automysqlbackup'
 mod 'torrancew/account',
   :git => 'git://github.com/torrancew/puppet-account',
-  :ref => '1491bd378ac0ac7ae22cd4bd8c29bb19f54d2f16'
+  :ref => '7bcafff16154c01d9d66e460ee10d8679b525abe'
 mod 'attachmentgenie/ssh'
 mod 'puppetlabs/mysql'
 mod 'puppetlabs/apache'
@@ -22,3 +22,4 @@ mod 'rjw1/perl_local_lib',
   :git => 'git://github.com/rjw1/puppet-perl_local_lib.git'
 mod 'torrance/cpanm',
   :git => 'git://github.com/torrancew/puppet-cpanm.git'
+mod 'puppetlabs/sshkeys_core'
