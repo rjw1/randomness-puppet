@@ -21,7 +21,10 @@ accounts:
       - sudo
       - users
       - adm
-    ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQDEh7U1DlU9H1sWzzpuld/ifHPGTNJkawI/5UJmLWkZjkTbwtIMyoFi5QWtkloKVEQQCjCIHwW5+hgVzZmD63uXBYhQBJmQ2wuTlcyTIUhOtZ6RW8/nYmZm/Ty0hi1iYYKUrZRZFTxpt38VMk1VNEwYQ9BBK00GsJkExKktJLmGsmmC1wfoQrsl9bYwwkvenD9RreMVAO80pnPrvYxy9eJpXY3nC+MT7zIOLiN9XQ2BpBpGH5dLw2P/zRENDxv48GCz6bllTO21q5iRMgwwSfGh65mANHXDsHQgau/BnmSulFlcOczG5dhscT6GGG8yx2i9iiWuySbV2BfiuWjTzzq3
+    ssh_keys:
+      roti-key:
+        type: 'ssh-rsa'
+        key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQCjBomiY7D+dkn9OhqxUO4Q3CIxj2nsrjaJAXM6pQFN3n/TogKI6EdaSNr0+usvtOYCQDH4SrSS/SWd0rNy9jaMmdijAh/4v/VibdkqlKwTztkTCCOEWIVKU4YwjeAnJMvuGq2Db1orzZ7KBWZhbdY2E4Vypr+nbM6VuCWeAi/QhWN8U6yfKEjxYjxTz+x28FtoB72RPVkEnRPgazzL2EHGYEboRbQxqC8lpFF70L7sYv2/gu+b0YlMEjPoWSsHL1+92UzPYoXDTEszN7AzwzdwwtK3aoyYKvDGqh5ooyFR9gHY2PG4jb4vqOkYTxFSWLBpb3VA+6HllXAzMHa4K1/UhsOoya7MCYb+MCg2jkBBqfYqQo8IbrlcKIwibJUMcTQ+iA7ZyW2171Q+7d1CsNizhC88O+eHLIEvxz2+8HgLgayRURK5Ai2sHM50bmZ0PklLf6dTHbGm1zD+bKiAKO9DCdJ2hjx8npeJ5sYOYY4OVi5M3V9lhYd0FdkGWVwkmz37d/PTZkZz9MH87wQ8lrJ4Qs4q7O+cCm/kHJ4zzlvaNslsUja/tjqGqqUwYZV/maDXwWmFE+z6o8pnozloBWYRNcrJgrOn7In0TyY+zOR7AqgaIWP7AMtrhiqgz6/iform7H2lY/kYPMGoFEdXRpd1s5wPHhZ+WtROrPiWoMm2uQ=='
   kake:
     comment: 'Kake Pugh'
     groups:
@@ -29,7 +32,10 @@ accounts:
       - users
       - adm
     home_dir_perms: '0755'
-    ssh_key: AAAAB3NzaC1yc2EAAAADAQABAAABAQC+6ZJ5fIUQAiLoyRjqig7x2Bm3m98zG6f0ogqsbQuDjz3PmxFUYciYjiLgqQOzUjSHL6xwBJqxFU7ap7QDyQEYACgdb6bpIsD0tGBKNaC/Yw1z5Lvm1AO3vuoURI5e0nH1XehNkl8Nmxq08WHPhcBH6+QAzlS2eue0NMZfW4j+Ami7KnbBID1j0Oe2zvxJ+7/ow6p4PH8pzK6fYpNNB6dDwwDyT6H1j2chhN0OJSsUsUAOmyM3piHbvQDBzvBDeWkdjMdXqhvqwCDuI+ErfPLGV1CyGGxmj6cEFEIVsE5chn8yjPFKaIttHjFH8Z4mgGngVh4NXFP2OaVUUMX5N1AP
+    ssh_keys:
+      kake-key:
+        type: 'ssh-rsa'
+        key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC+6ZJ5fIUQAiLoyRjqig7x2Bm3m98zG6f0ogqsbQuDjz3PmxFUYciYjiLgqQOzUjSHL6xwBJqxFU7ap7QDyQEYACgdb6bpIsD0tGBKNaC/Yw1z5Lvm1AO3vuoURI5e0nH1XehNkl8Nmxq08WHPhcBH6+QAzlS2eue0NMZfW4j+Ami7KnbBID1j0Oe2zvxJ+7/ow6p4PH8pzK6fYpNNB6dDwwDyT6H1j2chhN0OJSsUsUAOmyM3piHbvQDBzvBDeWkdjMdXqhvqwCDuI+ErfPLGV1CyGGxmj6cEFEIVsE5chn8yjPFKaIttHjFH8Z4mgGngVh4NXFP2OaVUUMX5N1AP'
 
 apache::purge_configs: false
 
