@@ -1,0 +1,47 @@
+---
+classes:
+  - mysql::server
+  - apache
+  - apache::mod::userdir
+  - apache::mod::rewrite
+
+accounts:
+  lb:
+    comment: 'london bookshops'
+    home_dir_perms: '0755'
+  lv:
+    comment: 'london vegetarian'
+    home_dir_perms: '0755'
+  pubology:
+    comment: 'pubology'
+    home_dir_perms: '0755'
+  lc:
+    comment: 'london crafts'
+    home_dir_perms: '0755'
+
+ufw_allow:
+  allow-ssh-from-home-ipv6:
+    port: '22'
+    from: '2001:8b0:ca94:869f::/64'
+    ip: '2001:41c8:51:945::69/64'
+  allow-ssh-from-shell-01-ipv6:
+    port: '22'
+    from: '2a03:b0c0:1:d0::dc:b001/64'
+    ip: '2001:41c8:51:945::69/64'
+  allow-ssh-from-the-ipv6:
+    port: '22'
+    from: '2001:41c8:10:b1f:c0ff:ee:15:900d/64'
+    ip: '2001:41c8:51:945::69/64'
+  allow-ssh-from-the:
+    port: '22'
+    from: '46.43.34.31'
+
+automysqlbackup::config:
+  'databases':
+     mysql_dump_use_separate_dirs: 'yes'
+     db_exclude:
+       - mysql
+       - information_schema
+       - performance_schema
+       - test
+     postbackup: '/usr/local/sbin/mysqlpostbackup.sh'
