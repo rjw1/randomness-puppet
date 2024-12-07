@@ -56,7 +56,11 @@ ufw_allow:
 base_packages:
   - iftop
   - dstat
-  - gpgv2
+  - gpg
+  - ack
+  - htop
   - tmux
   - screen
   - backup2l
+  - net-tools
+  - lynx
