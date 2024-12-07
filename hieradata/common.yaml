@@ -3,14 +3,9 @@ classes:
   - vim
   - nano::must::die
   - git
-  - sudo
-  - ssh::server
-  - ssh::client
   - bobs_config
   - perl_local_lib
   - cpanm
-  - ufw
-  - timezone
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
