@@ -19,7 +19,7 @@ FORGE
     rjw1-nano (0.0.1)
 
 GIT
-  remote: git://github.com/rjw1/attachmentgenie-ufw.git
+  remote: https://github.com/rjw1/attachmentgenie-ufw.git
   ref: ada681d
   sha: ada681db8ba3d119f53dbe0e5c63f70ae1c6a543
   specs:
@@ -27,21 +27,21 @@ GIT
       puppetlabs-stdlib (>= 2.2.1)
 
 GIT
-  remote: git://github.com/rjw1/puppet-bobs_config.git
+  remote: https://github.com/rjw1/puppet-bobs_config.git
   ref: master
   sha: 3493129797e9b6dbf5dec18221a4dde2e5dac9a2
   specs:
     rjw1-bobs_config (0.0.1)
 
 GIT
-  remote: git://github.com/rjw1/puppet-perl_local_lib.git
+  remote: https://github.com/rjw1/puppet-perl_local_lib.git
   ref: master
   sha: d67bac582d2287eb3153e61c7cae8b95e70ee357
   specs:
     rjw1-perl_local_lib (0.0.1)
 
 GIT
-  remote: git://github.com/torrancew/puppet-cpanm.git
+  remote: https://github.com/torrancew/puppet-cpanm.git
   ref: master
   sha: ffb0d139d6ada9ec0c683f534984fd187caa3844
   specs:
