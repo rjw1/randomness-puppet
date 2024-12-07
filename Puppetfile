@@ -3,6 +3,7 @@ forge 'https://forgeapi.puppetlabs.com/'
 mod 'saz/vim'
 mod 'puppetlabs/git'
 mod 'nextrevision/automysqlbackup'
+mod 'puppetlabs-accounts', '8.2.1'
 mod 'puppetlabs/mysql'
 mod 'puppetlabs/apache'
 mod 'rjw1/ufw',
