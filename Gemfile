@@ -19,3 +19,5 @@ gem 'puppet-syntax'
 gem 'puppet-lint'
 gem 'rspec-puppet'
 gem 'puppetlabs_spec_helper'
+
+gem "archive-tar-minitar", "~> 0.8"
