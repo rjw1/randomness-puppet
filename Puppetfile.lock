@@ -1,8 +1,6 @@
 FORGE
   remote: https://forgeapi.puppetlabs.com/
   specs:
-    attachmentgenie-ssh (3.0.0)
-      puppetlabs-stdlib (< 5.0.0, >= 4.13.0)
     nextrevision-automysqlbackup (0.2.4)
       puppetlabs-stdlib (>= 3.0.0)
     puppetlabs-apache (4.0.0)
@@ -19,13 +17,6 @@ FORGE
     puppetlabs-stdlib (4.25.1)
     puppetlabs-translate (1.2.0)
     rjw1-nano (0.0.1)
-    saz-sudo (5.0.0)
-      puppetlabs-stdlib (< 5.0.0, >= 2.6.0)
-    saz-timezone (5.0.2)
-      puppetlabs-stdlib (< 5.0.0, >= 2.6.0)
-      stm-debconf (< 3.0.0, >= 2.0.0)
-    saz-vim (2.7.0)
-    stm-debconf (2.3.0)
 
 GIT
   remote: git://github.com/rjw1/attachmentgenie-ufw.git
@@ -50,13 +41,6 @@ GIT
     rjw1-perl_local_lib (0.0.1)
 
 GIT
-  remote: git://github.com/torrancew/puppet-account
-  ref: 7bcafff16154c01d9d66e460ee10d8679b525abe
-  sha: 7bcafff16154c01d9d66e460ee10d8679b525abe
-  specs:
-    torrancew-account (1.0.0)
-
-GIT
   remote: git://github.com/torrancew/puppet-cpanm.git
   ref: master
   sha: ffb0d139d6ada9ec0c683f534984fd187caa3844
@@ -64,19 +48,14 @@ GIT
     torrance-cpanm (0.0.1)
 
 DEPENDENCIES
-  attachmentgenie-ssh (>= 0)
   nextrevision-automysqlbackup (>= 0)
   puppetlabs-apache (>= 0)
   puppetlabs-git (>= 0)
   puppetlabs-mysql (>= 0)
-  puppetlabs-stdlib (~> 4.0)
   rjw1-bobs_config (>= 0)
   rjw1-nano (>= 0)
   rjw1-perl_local_lib (>= 0)
   rjw1-ufw (>= 0)
-  saz-sudo (>= 0)
-  saz-timezone (>= 0)
   saz-vim (>= 0)
   torrance-cpanm (>= 0)
-  torrancew-account (>= 0)
 
