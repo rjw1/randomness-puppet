@@ -6,8 +6,8 @@ classes:
   - bobs_config
   - perl_local_lib
   - cpanm
-sudo_conf:
-  sudo_group:
+sudo::configs:
+  'sudo_group':
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
 accounts::user_list:
   bob:
