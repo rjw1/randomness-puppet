@@ -7,4 +7,5 @@ node default {
           },
 })
   stdlib::ensure_packages($base_packages)
+  include accounts
 }

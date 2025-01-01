@@ -9,28 +9,24 @@ classes:
 sudo_conf:
   sudo_group:
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
-accounts:
+accounts::user_list:
   bob:
     comment: 'bob walker'
     groups:
       - sudo
       - users
       - adm
-    ssh_keys:
-      roti-key:
-        type: 'ssh-rsa'
-        key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQCjBomiY7D+dkn9OhqxUO4Q3CIxj2nsrjaJAXM6pQFN3n/TogKI6EdaSNr0+usvtOYCQDH4SrSS/SWd0rNy9jaMmdijAh/4v/VibdkqlKwTztkTCCOEWIVKU4YwjeAnJMvuGq2Db1orzZ7KBWZhbdY2E4Vypr+nbM6VuCWeAi/QhWN8U6yfKEjxYjxTz+x28FtoB72RPVkEnRPgazzL2EHGYEboRbQxqC8lpFF70L7sYv2/gu+b0YlMEjPoWSsHL1+92UzPYoXDTEszN7AzwzdwwtK3aoyYKvDGqh5ooyFR9gHY2PG4jb4vqOkYTxFSWLBpb3VA+6HllXAzMHa4K1/UhsOoya7MCYb+MCg2jkBBqfYqQo8IbrlcKIwibJUMcTQ+iA7ZyW2171Q+7d1CsNizhC88O+eHLIEvxz2+8HgLgayRURK5Ai2sHM50bmZ0PklLf6dTHbGm1zD+bKiAKO9DCdJ2hjx8npeJ5sYOYY4OVi5M3V9lhYd0FdkGWVwkmz37d/PTZkZz9MH87wQ8lrJ4Qs4q7O+cCm/kHJ4zzlvaNslsUja/tjqGqqUwYZV/maDXwWmFE+z6o8pnozloBWYRNcrJgrOn7In0TyY+zOR7AqgaIWP7AMtrhiqgz6/iform7H2lY/kYPMGoFEdXRpd1s5wPHhZ+WtROrPiWoMm2uQ=='
+    sshkeys:
+      - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDKY8i4nS+82XE2Qf7yycv7QLM77Z4Gb3MEW/vW5jPQi bob+personal@roti'
   kake:
     comment: 'Kake Pugh'
     groups:
       - sudo
       - users
       - adm
-    home_dir_perms: '0755'
-    ssh_keys:
-      kake-key:
-        type: 'ssh-rsa'
-        key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC+6ZJ5fIUQAiLoyRjqig7x2Bm3m98zG6f0ogqsbQuDjz3PmxFUYciYjiLgqQOzUjSHL6xwBJqxFU7ap7QDyQEYACgdb6bpIsD0tGBKNaC/Yw1z5Lvm1AO3vuoURI5e0nH1XehNkl8Nmxq08WHPhcBH6+QAzlS2eue0NMZfW4j+Ami7KnbBID1j0Oe2zvxJ+7/ow6p4PH8pzK6fYpNNB6dDwwDyT6H1j2chhN0OJSsUsUAOmyM3piHbvQDBzvBDeWkdjMdXqhvqwCDuI+ErfPLGV1CyGGxmj6cEFEIVsE5chn8yjPFKaIttHjFH8Z4mgGngVh4NXFP2OaVUUMX5N1AP'
+    sshkeys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCgiU6F149b8wqxB7Ygkq8zCaswFh79IgVq6Hejwa+JtAqZIKsh7WLSSOy886weVuMWMlVXiUSMH2RW3FwFsA7WBed4wxZFAaY4L0tPDGKxcjAXw1kMB9J4+3Aj6fNghxmYwSMkzQjZ9XX1tilFsb1itw8EJQsXVox2sg88bHKrDvvzwyUIixabFXnPU6XEnSgyYxxHYex5in7/RIb7UojyWGIu3H8tDLuQBKWYNHnAKtz6zeNnrBe5ggCgjPaDoTKoVr2xqJpXVbQf8EXtkz6AP5fpu8TRzI0dSGk9vEjjzRRhqxZknltNjREdcxKGCJ9YrlWZzcRY80/J2YXf/p+1 kake@unknown'
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6LN5PzZCg/ZDG4cXhRV+M+smxYEDwXA5xlp/6zMgih4hqcTekvIdaitD8SMNwAvt+K2xM+k5qy9Bb5YTBthrZP0ufjPCc1OBOB+8BkYof82U3wLttiixMpxgxf7UllutHzEvZFwWX37ZnG5co2c+dvl4RWlQbYscsRmqhMVSLGSnbV7I6B3iwDWY9pqaOQw7Bk6Gac/Mu43OIp7y9EnAfMCixuyqTkurDnO8wavg6h48CoMuti3jLXhmrvQmNGR8E9D423MBA8b+a6j5z5giwizO/dsF/66OjRI6a92a6xql7ZNI1szldy9lPDYt/mgWYCj0FYYJCRggoDk+CeHJWgSxB6NDJUvIlPDjsNFecMLHu8Weu1SjIoG7WZ7/ss8RD7H0pxff2jV5HNLuj2qinR5/GBqptfDcqYyoC4zuli1UKb+XmgaEDDWgUBSFzfxDotYE/YzMKg0XXGqxCserrcxSLBuE2B7brRdNfEaQA9+ih+5avUA+CheOEXl3kTcM9reu7NI2C87MjyqIazd/rrHQy0w6VTI3xBP1ugfwKUVvOOuHKOV388QRNwwIzVnsyEpRZZX1qi0wKQpwN2Vpfo7hTJmV//3MsZ+EubcPk8sU33YWnBvnsKJXn55r0p0NAndrKBVPimuaqnOsVniak+/Gl4Sg65aQ0FGwy5aLzTw== kake@unknown'
 
 apache::purge_configs: false
 
