@@ -2,6 +2,7 @@ forge 'https://forgeapi.puppetlabs.com/'
 
 mod 'saz/vim'
 mod 'saz-sudo', '9.0.0'
+mod 'saz-ssh', '13.0.0'
 mod 'puppetlabs/git'
 mod 'nextrevision/automysqlbackup'
 mod 'puppetlabs-accounts', '8.2.1'

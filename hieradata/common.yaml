@@ -30,8 +30,15 @@ accounts::user_list:
 
 apache::purge_configs: false
 
-ssh::server::allowed_users: ['bob','kake']
-ssh::server::use_pam: 'yes'
+ssh::server:
+  validate_sshd_file: true
+  storeconfigs_enabled: false
+ssh::server_options:
+  UsePAM: 'yes'
+  PermitRootLogin: 'no'
+  PasswordAuthentication: 'no'
+  AllowUsers: 'bob kake'
+  X11Forwarding: 'no'
 
 ufw_allow:
   allow-ssh-from-home:
