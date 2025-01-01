@@ -5,19 +5,28 @@ classes:
   - apache::mod::userdir
   - apache::mod::rewrite
 
-accounts:
+accounts::user_list:
   lb:
     comment: 'london bookshops'
-    home_dir_perms: '0755'
+    home_mode: '0755'
   lv:
     comment: 'london vegetarian'
-    home_dir_perms: '0755'
+    home_mode: '0755'
   pubology:
     comment: 'pubology'
-    home_dir_perms: '0755'
+    home_mode: '0755'
   lc:
     comment: 'london crafts'
-    home_dir_perms: '0755'
+    home_mode: '0755'
+  cgc:
+    comment: 'completists guide to croydon'
+    home_mode: '0755'
+  rgl:
+    comment: 'randomness guide to london'
+    home_mode: '0755'
+  lrc:
+    comment: 'london road croydon'
+    home_mode: '0755'
 
 ufw_allow:
   allow-ssh-from-home-ipv6:
