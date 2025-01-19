@@ -6,6 +6,7 @@ classes:
   - bobs_config
   - perl_local_lib
   - cpanm
+  - stdlib
 sudo::configs:
   'sudo_group':
     content: '%sudo ALL=(ALL) NOPASSWD:ALL'
