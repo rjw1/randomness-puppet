@@ -467,6 +467,13 @@ apache::vhosts::vhosts:
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
+      - path: '/edit/'
+        provider: 'location'
+        auth_type: 'Basic'
+        auth_name: 'Croydon Completists Guide Edit Area'
+        auth_basic_provider: 'file'
+        auth_user_file: '/home/cgc/.htpasswd-cgc-edit'
+        require: 'valid-user'
       - path: '/home/cgc/web/vhosts/croydon.randomness.org.uk/edit'
         options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
         auth_type: 'Basic'
@@ -563,6 +570,13 @@ apache::vhosts::vhosts:
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
+      - path: '/edit/'
+        provider: 'location'
+        auth_type: 'Basic'
+        auth_name: 'london crafts Edit Area'
+        auth_basic_provider: 'file'
+        auth_user_file: '/home/lc/.htpasswd-lc-edit'
+        require: 'valid-user'
       - path: '/home/lc/web/vhosts/london-crafts.org/edit'
         options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
         auth_type: 'Basic'
