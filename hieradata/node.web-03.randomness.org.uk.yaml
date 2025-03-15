@@ -451,8 +451,6 @@ apache::vhosts::vhosts:
         require: 'valid-user'
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-          RewriteEngine On
-          RewriteRule /edit /wiki.cgi [R]
       - path: '/home/cgc/web/vhosts/croydon.randomness.org.uk/edit/*'
         options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
         auth_type: 'Basic'
@@ -462,8 +460,6 @@ apache::vhosts::vhosts:
         require: 'valid-user'
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-          RewriteEngine On
-          RewriteRule /edit/ /wiki.cgi [R]
       - path: '/home/cgc/web/vhosts/croydon.randomness.org.uk/*'
         options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
         allow_override: 'All'
