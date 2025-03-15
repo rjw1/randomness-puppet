@@ -117,6 +117,13 @@ apache::vhosts::vhosts:
       Header always set Strict-Transport-Security "max-age=15768000"
 
     directories:
+      - path: '/edit/'
+        provider: 'location'
+        auth_type: 'Basic'
+        auth_name: ' RGL Edit Area'
+        auth_basic_provider: 'file'
+        auth_user_file: '/home/rgl/.htpasswd-rgl-edit'
+        require: 'valid-user'
       - path: '/home/rgl/web/vhosts/london.randomness.org.uk/edit'
         options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
         auth_type: 'Basic'
