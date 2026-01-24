@@ -627,3 +627,61 @@ apache::vhosts::vhosts:
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  'kake.randomness.org.uk-80':
+    servername: 'kake.randomness.org.uk'
+    serveradmin: 'kake@randomness.org.uk'
+    serveraliases:
+      - 'www.kake.randomness.org.uk'
+    docroot: '/home/kake/web/vhosts/kake.randomness.org.uk'
+    manage_docroot: false
+    port: 80
+    ssl: false
+    override: ['All']
+    custom_fragment: |
+      RewriteEngine On
+      # Rewrite any HTTP requests to HTTPS
+      RewriteRule ^/?(.*) https://kake.randomness.org.uk/$1 [R=301,L]
+      Header always set Strict-Transport-Security "max-age=15768001"
+  'kake.randomness.org.uk-ssl':
+    serveradmin: 'kake@randomness.org.uk'
+    servername: 'kake.randomness.org.uk'
+    serveraliases:
+      - 'www.kake.randomness.org.uk'
+    docroot: '/home/kake/web/vhosts/kake.randomness.org.uk'
+    manage_docroot: false
+    port: 443
+    ssl: true
+    override: ['All']
+    custom_fragment: |
+      AddHandler cgi-script .cgi
+      DirectoryIndex index.html
+      UserDir disabled
+      SetOutputFilter DEFLATE
+      ErrorDocument 503 /holding.html
+
+      # SSL cert files
+      SSLCertificateFile      /etc/letsencrypt/live/pubology.co.uk/cert.pem
+      SSLCertificateKeyFile   /etc/letsencrypt/live/pubology.co.uk/privkey.pem
+      SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
+      Include /etc/letsencrypt/options-ssl-apache.conf
+      
+      # HSTS (6 months)
+      Header always set Strict-Transport-Security "max-age=15768001"
+
+    directories:
+      - path: '/home/kake/web/vhosts/kake.randomness.org.uk/*'
+        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
+        allow_override: 'All'
+        allow: ['from all']
+        custom_fragment: |
+          AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+
+      - path: '/home/kake/web/vhosts/kake.randomness.org.uk/'
+        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
+        allow_override: 'All'
+        allow: ['from all']
+        custom_fragment: |
+          RewriteEngine On
+
+          # Enable deflate
+          AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
