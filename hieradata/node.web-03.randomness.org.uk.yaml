@@ -12,88 +12,87 @@ base_packages:
   - openguides
   - libdbd-mysql-perl
 
-
 accounts::user_list:
   lb:
-    comment: 'london bookshops'
-    home_mode: '0755'
+    comment: "london bookshops"
+    home_mode: "0755"
   lv:
-    comment: 'london vegetarian'
-    home_mode: '0755'
+    comment: "london vegetarian"
+    home_mode: "0755"
   pubology:
-    comment: 'pubology'
-    home_mode: '0755'
+    comment: "pubology"
+    home_mode: "0755"
   lc:
-    comment: 'london crafts'
-    home_mode: '0755'
+    comment: "london crafts"
+    home_mode: "0755"
   cgc:
-    comment: 'completists guide to croydon'
-    home_mode: '0755'
+    comment: "completists guide to croydon"
+    home_mode: "0755"
   rgl:
-    comment: 'randomness guide to london'
-    home_mode: '0755'
+    comment: "randomness guide to london"
+    home_mode: "0755"
   lrc:
-    comment: 'london road croydon'
-    home_mode: '0755'
+    comment: "london road croydon"
+    home_mode: "0755"
 
-letsencrypt::email: 'bob@randomness.org.uk'
-letsencrypt::renew_cron_ensure: 'present'
+letsencrypt::email: "bob@randomness.org.uk"
+letsencrypt::renew_cron_ensure: "present"
 letsencrypt::renew_cron_minute: 0
 letsencrypt::renew_cron_hour: 6
-letsencrypt::renew_cron_monthday: '1-31/2'
+letsencrypt::renew_cron_monthday: "1-31/2"
 
 ufw_allow:
   allow-ssh-from-home-ipv6:
-    port: '22'
-    from: '2001:8b0:ca94:869f::/64'
-    ip: '2001:41c8:51:945::69/64'
+    port: "22"
+    from: "2001:8b0:ca94:869f::/64"
+    ip: "2001:41c8:51:945::69/64"
   allow-ssh-from-shell-01-ipv6:
-    port: '22'
-    from: '2a03:b0c0:1:d0::dc:b001/64'
-    ip: '2001:41c8:51:945::69/64'
+    port: "22"
+    from: "2a03:b0c0:1:d0::dc:b001/64"
+    ip: "2001:41c8:51:945::69/64"
   allow-ssh-from-the-ipv6:
-    port: '22'
-    from: '2001:41c8:10:b1f:c0ff:ee:15:900d/64'
-    ip: '2001:41c8:51:945::69/64'
+    port: "22"
+    from: "2001:41c8:10:b1f:c0ff:ee:15:900d/64"
+    ip: "2001:41c8:51:945::69/64"
   allow-ssh-from-the:
-    port: '22'
-    from: '46.43.34.31'
+    port: "22"
+    from: "46.43.34.31"
 
 automysqlbackup::config:
-  'databases':
-     mysql_dump_use_separate_dirs: 'yes'
-     db_exclude:
-       - mysql
-       - information_schema
-       - performance_schema
-       - test
-     postbackup: '/usr/local/sbin/mysqlpostbackup.sh'
+  "databases":
+    mysql_dump_use_separate_dirs: "yes"
+    db_exclude:
+      - mysql
+      - information_schema
+      - performance_schema
+      - test
+    postbackup: "/usr/local/sbin/mysqlpostbackup.sh"
 apache::vhosts::vhosts:
-  'london.randomness.org.uk-80':
-    servername: 'london.randomness.org.uk'
-    serveradmin: 'london@randomness.org.uk'
+  "london.randomness.org.uk-80":
+    servername: "london.randomness.org.uk"
+    serveradmin: "london@randomness.org.uk"
     serveraliases:
-      - 'www.london.randomness.org.uk'
-    docroot: '/home/rgl/web/vhosts/london.randomness.org.uk'
+      - "www.london.randomness.org.uk"
+    docroot: "/home/rgl/web/vhosts/london.randomness.org.uk"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://london.randomness.org.uk/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'london.randomness.org.uk-ssl':
-    serveradmin: 'london@randomness.org.uk'
-    servername: 'london.randomness.org.uk'
+  "london.randomness.org.uk-ssl":
+    serveradmin: "london@randomness.org.uk"
+    servername: "london.randomness.org.uk"
     serveraliases:
-      - 'www.london.randomness.org.uk'
-    docroot: '/home/rgl/web/vhosts/london.randomness.org.uk'
+      - "www.london.randomness.org.uk"
+    docroot: "/home/rgl/web/vhosts/london.randomness.org.uk"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RLimitNPROC 5 10
       AddHandler cgi-script .cgi
@@ -112,47 +111,47 @@ apache::vhosts::vhosts:
       SSLCertificateKeyFile   /etc/letsencrypt/live/pubology.co.uk/privkey.pem
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768000"
 
     directories:
-      - path: '/edit/'
-        provider: 'location'
-        auth_type: 'Basic'
-        auth_name: ' RGL Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/rgl/.htpasswd-rgl-edit'
-        require: 'valid-user'
-      - path: '/home/rgl/web/vhosts/london.randomness.org.uk/edit'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        auth_type: 'Basic'
-        auth_name: ' RGL Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/rgl/.htpasswd-rgl-edit'
-        require: 'valid-user'
+      - path: "/edit/"
+        provider: "location"
+        auth_type: "Basic"
+        auth_name: " RGL Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/rgl/.htpasswd-rgl-edit"
+        require: "valid-user"
+      - path: "/home/rgl/web/vhosts/london.randomness.org.uk/edit"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        auth_type: "Basic"
+        auth_name: " RGL Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/rgl/.htpasswd-rgl-edit"
+        require: "valid-user"
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-      - path: '/home/rgl/web/vhosts/london.randomness.org.uk/edit/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        auth_type: 'Basic'
-        auth_name: 'RGL Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/rgl/.htpasswd-rgl-edit'
-        require: 'valid-user'
+      - path: "/home/rgl/web/vhosts/london.randomness.org.uk/edit/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        auth_type: "Basic"
+        auth_name: "RGL Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/rgl/.htpasswd-rgl-edit"
+        require: "valid-user"
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-      - path: '/home/rgl/web/vhosts/london.randomness.org.uk/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/rgl/web/vhosts/london.randomness.org.uk/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/rgl/web/vhosts/london.randomness.org.uk/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/rgl/web/vhosts/london.randomness.org.uk/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
@@ -170,31 +169,31 @@ apache::vhosts::vhosts:
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-  'pubology.co.uk-80':
-    servername: 'pubology.co.uk'
-    serveradmin: 'pubology.co.uk'
+  "pubology.co.uk-80":
+    servername: "pubology.co.uk"
+    serveradmin: "pubology.co.uk"
     serveraliases:
-      - 'www.pubology.co.uk'
-    docroot: '/home/pubology/web/vhosts/pubology.co.uk'
+      - "www.pubology.co.uk"
+    docroot: "/home/pubology/web/vhosts/pubology.co.uk"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://pubology.co.uk/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'pubology.co.uk-ssl':
-    serveradmin: 'pubology.co.uk'
-    servername: 'pubology.co.uk'
+  "pubology.co.uk-ssl":
+    serveradmin: "pubology.co.uk"
+    servername: "pubology.co.uk"
     serveraliases:
-      - 'www.pubology.co.uk'
-    docroot: '/home/pubology/web/vhosts/pubology.co.uk'
+      - "www.pubology.co.uk"
+    docroot: "/home/pubology/web/vhosts/pubology.co.uk"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       AddHandler cgi-script .cgi
       DirectoryIndex index.html
@@ -207,56 +206,56 @@ apache::vhosts::vhosts:
       SSLCertificateKeyFile   /etc/letsencrypt/live/pubology.co.uk/privkey.pem
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
-      - path: '/home/pubology/web/vhosts/pubology.co.uk/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/pubology/web/vhosts/pubology.co.uk/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/pubology/web/vhosts/pubology.co.uk/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/pubology/web/vhosts/pubology.co.uk/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-  'londonbookshops.org-80':
-    servername: 'londonbookshops.org'
-    serveradmin: 'londonbookshops.org'
+  "londonbookshops.org-80":
+    servername: "londonbookshops.org"
+    serveradmin: "londonbookshops.org"
     serveraliases:
-      - 'www.londonbookshops.org'
-      - 'londonbookshopmap.org'
-      - 'www.londonbookshopmap.org'
-    docroot: '/home/lb/web/vhosts/londonbookshops.org'
+      - "www.londonbookshops.org"
+      - "londonbookshopmap.org"
+      - "www.londonbookshopmap.org"
+    docroot: "/home/lb/web/vhosts/londonbookshops.org"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://londonbookshops.org/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'londonbookshops.org-ssl':
-    serveradmin: 'londonbookshops.org'
-    servername: 'londonbookshops.org'
+  "londonbookshops.org-ssl":
+    serveradmin: "londonbookshops.org"
+    servername: "londonbookshops.org"
     serveraliases:
-      - 'www.londonbookshops.org'
-      - 'londonbookshopmap.org'
-      - 'www.londonbookshopmap.org'
-    docroot: '/home/lb/web/vhosts/londonbookshops.org'
+      - "www.londonbookshops.org"
+      - "londonbookshopmap.org"
+      - "www.londonbookshopmap.org"
+    docroot: "/home/lb/web/vhosts/londonbookshops.org"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       AddHandler cgi-script .cgi
       DirectoryIndex map.html
@@ -269,54 +268,54 @@ apache::vhosts::vhosts:
       SSLCertificateKeyFile   /etc/letsencrypt/live/pubology.co.uk/privkey.pem
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
-      - path: '/home/lb/web/vhosts/londonbookshops.org/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lb/web/vhosts/londonbookshops.org/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/lb/web/vhosts/londonbookshops.org/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lb/web/vhosts/londonbookshops.org/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-  'london-vegetarian.org-80':
+  "london-vegetarian.org-80":
     priority: 26
-    servername: 'london-vegetarian.org'
-    serveradmin: 'london-vegetarian.org'
+    servername: "london-vegetarian.org"
+    serveradmin: "london-vegetarian.org"
     serveraliases:
-      - 'www.london-vegetarian.org'
-    docroot: '/home/lv/web/vhosts/london-vegetarian.org'
+      - "www.london-vegetarian.org"
+    docroot: "/home/lv/web/vhosts/london-vegetarian.org"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://london-vegetarian.org/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'london-vegetarian.org-ssl':
+  "london-vegetarian.org-ssl":
     priority: 26
-    serveradmin: 'london-vegetarian.org'
-    servername: 'london-vegetarian.org'
+    serveradmin: "london-vegetarian.org"
+    servername: "london-vegetarian.org"
     serveraliases:
-      - 'www.london-vegetarian.org'
-    docroot: '/home/lv/web/vhosts/london-vegetarian.org'
+      - "www.london-vegetarian.org"
+    docroot: "/home/lv/web/vhosts/london-vegetarian.org"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       AddHandler cgi-script .cgi
       DirectoryIndex index.html
@@ -331,55 +330,55 @@ apache::vhosts::vhosts:
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
       Include /home/lv/web/conf/rewrites.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
-      - path: '/home/lv/web/vhosts/london-vegetarian.org/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lv/web/vhosts/london-vegetarian.org/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/lv/web/vhosts/london-vegetarian.org/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lv/web/vhosts/london-vegetarian.org/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-  'london-road-croydon.org-80':
+  "london-road-croydon.org-80":
     priority: 26
-    servername: 'london-road-croydon.org'
-    serveradmin: 'london-road-croydon.org'
+    servername: "london-road-croydon.org"
+    serveradmin: "london-road-croydon.org"
     serveraliases:
-      - 'www.london-road-croydon.org'
-    docroot: '/home/lrc/web/vhosts/london-road-croydon.org'
+      - "www.london-road-croydon.org"
+    docroot: "/home/lrc/web/vhosts/london-road-croydon.org"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://london-road-croydon.org/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'london-road-croydon.org-ssl':
+  "london-road-croydon.org-ssl":
     priority: 26
-    serveradmin: 'london-road-croydon.org'
-    servername: 'london-road-croydon.org'
+    serveradmin: "london-road-croydon.org"
+    servername: "london-road-croydon.org"
     serveraliases:
-      - 'www.london-road-croydon.org'
-    docroot: '/home/lrc/web/vhosts/london-road-croydon.org'
+      - "www.london-road-croydon.org"
+    docroot: "/home/lrc/web/vhosts/london-road-croydon.org"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       AddHandler cgi-script .cgi
       DirectoryIndex index.html
@@ -394,56 +393,56 @@ apache::vhosts::vhosts:
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
       Include /home/lrc/web/conf/rewrites.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
-      - path: '/home/lrc/web/vhosts/london-road-croydon.org/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lrc/web/vhosts/london-road-croydon.org/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/lrc/web/vhosts/london-road-croydon.org/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lrc/web/vhosts/london-road-croydon.org/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-          
-  'croydon.randomness.org.uk-80':
+
+  "croydon.randomness.org.uk-80":
     priority: 27
-    servername: 'croydon.randomness.org.uk'
-    serveradmin: 'croydon@randomness.org.uk'
+    servername: "croydon.randomness.org.uk"
+    serveradmin: "croydon@randomness.org.uk"
     serveraliases:
-      - 'www.croydon.randomness.org.uk'
-    docroot: '/home/cgc/web/vhosts/croydon.randomness.org.uk'
+      - "www.croydon.randomness.org.uk"
+    docroot: "/home/cgc/web/vhosts/croydon.randomness.org.uk"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://croydon.randomness.org.uk/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'croydon.randomness.org.uk-ssl':
+  "croydon.randomness.org.uk-ssl":
     priority: 27
-    serveradmin: 'croydon@randomness.org.uk'
-    servername: 'croydon.randomness.org.uk'
+    serveradmin: "croydon@randomness.org.uk"
+    servername: "croydon.randomness.org.uk"
     serveraliases:
-      - 'www.croydon.randomness.org.uk'
-    docroot: '/home/cgc/web/vhosts/croydon.randomness.org.uk'
+      - "www.croydon.randomness.org.uk"
+    docroot: "/home/cgc/web/vhosts/croydon.randomness.org.uk"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RLimitNPROC 5 10
       AddHandler cgi-script .cgi
@@ -462,47 +461,47 @@ apache::vhosts::vhosts:
       SSLCertificateKeyFile   /etc/letsencrypt/live/pubology.co.uk/privkey.pem
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
-      - path: '/edit/'
-        provider: 'location'
-        auth_type: 'Basic'
-        auth_name: 'Croydon Completists Guide Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/cgc/.htpasswd-cgc-edit'
-        require: 'valid-user'
-      - path: '/home/cgc/web/vhosts/croydon.randomness.org.uk/edit'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        auth_type: 'Basic'
-        auth_name: 'Croydon Completists Guide Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/cgc/.htpasswd-cgc-edit'
-        require: 'valid-user'
+      - path: "/edit/"
+        provider: "location"
+        auth_type: "Basic"
+        auth_name: "Croydon Completists Guide Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/cgc/.htpasswd-cgc-edit"
+        require: "valid-user"
+      - path: "/home/cgc/web/vhosts/croydon.randomness.org.uk/edit"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        auth_type: "Basic"
+        auth_name: "Croydon Completists Guide Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/cgc/.htpasswd-cgc-edit"
+        require: "valid-user"
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-      - path: '/home/cgc/web/vhosts/croydon.randomness.org.uk/edit/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        auth_type: 'Basic'
-        auth_name: 'Croydon Completists Guide Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/cgc/.htpasswd-cgc-edit'
-        require: 'valid-user'
+      - path: "/home/cgc/web/vhosts/croydon.randomness.org.uk/edit/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        auth_type: "Basic"
+        auth_name: "Croydon Completists Guide Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/cgc/.htpasswd-cgc-edit"
+        require: "valid-user"
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-      - path: '/home/cgc/web/vhosts/croydon.randomness.org.uk/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/cgc/web/vhosts/croydon.randomness.org.uk/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/cgc/web/vhosts/croydon.randomness.org.uk/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/cgc/web/vhosts/croydon.randomness.org.uk/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
@@ -520,33 +519,33 @@ apache::vhosts::vhosts:
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-  'london-crafts.org-80':
+  "london-crafts.org-80":
     priority: 27
-    servername: 'london-crafts.org'
-    serveradmin: 'london-crafts.org'
+    servername: "london-crafts.org"
+    serveradmin: "london-crafts.org"
     serveraliases:
-      - 'www.london-crafts.org'
-    docroot: '/home/lc/web/vhosts/london-crafts.org'
+      - "www.london-crafts.org"
+    docroot: "/home/lc/web/vhosts/london-crafts.org"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://london-crafts.org/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'london-crafts.org-ssl':
+  "london-crafts.org-ssl":
     priority: 27
-    serveradmin: 'london-crafts.org'
-    servername: 'london-crafts.org'
+    serveradmin: "london-crafts.org"
+    servername: "london-crafts.org"
     serveraliases:
-      - 'www.london-crafts.org'
-    docroot: '/home/lc/web/vhosts/london-crafts.org'
+      - "www.london-crafts.org"
+    docroot: "/home/lc/web/vhosts/london-crafts.org"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RLimitNPROC 5 10
       AddHandler cgi-script .cgi
@@ -565,51 +564,51 @@ apache::vhosts::vhosts:
       SSLCertificateKeyFile   /etc/letsencrypt/live/pubology.co.uk/privkey.pem
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
-      - path: '/edit/'
-        provider: 'location'
-        auth_type: 'Basic'
-        auth_name: 'london crafts Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/lc/.htpasswd-lc-edit'
-        require: 'valid-user'
-      - path: '/home/lc/web/vhosts/london-crafts.org/edit'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        auth_type: 'Basic'
-        auth_name: 'london crafts Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/lc/.htpasswd-lc-edit'
-        require: 'valid-user'
+      - path: "/edit/"
+        provider: "location"
+        auth_type: "Basic"
+        auth_name: "london crafts Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/lc/.htpasswd-lc-edit"
+        require: "valid-user"
+      - path: "/home/lc/web/vhosts/london-crafts.org/edit"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        auth_type: "Basic"
+        auth_name: "london crafts Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/lc/.htpasswd-lc-edit"
+        require: "valid-user"
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
           RewriteEngine On
           RewriteRule /edit /wiki.cgi [R]
-      - path: '/home/lc/web/vhosts/london-crafts.org/edit/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        auth_type: 'Basic'
-        auth_name: 'Croydon Completists Guide Edit Area'
-        auth_basic_provider: 'file'
-        auth_user_file: '/home/lc/web/vhosts/london-crafts.org/edit/.htpasswd'
-        require: 'valid-user'
+      - path: "/home/lc/web/vhosts/london-crafts.org/edit/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        auth_type: "Basic"
+        auth_name: "Croydon Completists Guide Edit Area"
+        auth_basic_provider: "file"
+        auth_user_file: "/home/lc/web/vhosts/london-crafts.org/edit/.htpasswd"
+        require: "valid-user"
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
           RewriteEngine On
           RewriteRule /edit/ /wiki.cgi [R]
-      - path: '/home/lc/web/vhosts/london-crafts.org/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lc/web/vhosts/london-crafts.org/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/lc/web/vhosts/london-crafts.org/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/lc/web/vhosts/london-crafts.org/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
@@ -627,31 +626,33 @@ apache::vhosts::vhosts:
 
           # Enable deflate
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
-  'kake.randomness.org.uk-80':
-    servername: 'kake.randomness.org.uk'
-    serveradmin: 'kake@randomness.org.uk'
+  "kake.randomness.org.uk-80":
+    priority: 28
+    servername: "kake.randomness.org.uk"
+    serveradmin: "kake@randomness.org.uk"
     serveraliases:
-      - 'www.kake.randomness.org.uk'
-    docroot: '/home/kake/web/vhosts/kake.randomness.org.uk'
+      - "www.kake.randomness.org.uk"
+    docroot: "/home/kake/web/vhosts/kake.randomness.org.uk"
     manage_docroot: false
     port: 80
     ssl: false
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       RewriteEngine On
       # Rewrite any HTTP requests to HTTPS
       RewriteRule ^/?(.*) https://kake.randomness.org.uk/$1 [R=301,L]
       Header always set Strict-Transport-Security "max-age=15768001"
-  'kake.randomness.org.uk-ssl':
-    serveradmin: 'kake@randomness.org.uk'
-    servername: 'kake.randomness.org.uk'
+  "kake.randomness.org.uk-ssl":
+    priority: 28
+    serveradmin: "kake@randomness.org.uk"
+    servername: "kake.randomness.org.uk"
     serveraliases:
-      - 'www.kake.randomness.org.uk'
-    docroot: '/home/kake/web/vhosts/kake.randomness.org.uk'
+      - "www.kake.randomness.org.uk"
+    docroot: "/home/kake/web/vhosts/kake.randomness.org.uk"
     manage_docroot: false
     port: 443
     ssl: true
-    override: ['All']
+    override: ["All"]
     custom_fragment: |
       AddHandler cgi-script .cgi
       DirectoryIndex index.html
@@ -664,22 +665,22 @@ apache::vhosts::vhosts:
       SSLCertificateKeyFile   /etc/letsencrypt/live/pubology.co.uk/privkey.pem
       SSLCertificateChainFile /etc/letsencrypt/live/pubology.co.uk/chain.pem
       Include /etc/letsencrypt/options-ssl-apache.conf
-      
+
       # HSTS (6 months)
       Header always set Strict-Transport-Security "max-age=15768001"
 
     directories:
-      - path: '/home/kake/web/vhosts/kake.randomness.org.uk/*'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/kake/web/vhosts/kake.randomness.org.uk/*"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
 
-      - path: '/home/kake/web/vhosts/kake.randomness.org.uk/'
-        options: ['Indexes','Includes','FollowSymLinks','ExecCGI']
-        allow_override: 'All'
-        allow: ['from all']
+      - path: "/home/kake/web/vhosts/kake.randomness.org.uk/"
+        options: ["Indexes", "Includes", "FollowSymLinks", "ExecCGI"]
+        allow_override: "All"
+        allow: ["from all"]
         custom_fragment: |
           RewriteEngine On
 
