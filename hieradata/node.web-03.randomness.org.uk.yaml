@@ -6,6 +6,7 @@ classes:
   - apache::mod::rewrite
   - apache::mod::headers
   - apache::vhosts
+  - ipv6_watchdog
 
 base_packages:
   - libexpat1-dev

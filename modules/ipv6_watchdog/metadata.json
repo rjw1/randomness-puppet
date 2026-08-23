@@ -1,0 +1,19 @@
+{
+  "name": "rjw1-ipv6_watchdog",
+  "version": "0.1.0",
+  "author": "rjw1",
+  "summary": "Restart systemd-networkd when IPv6 connectivity drops.",
+  "license": "MIT",
+  "source": "",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": ["*"]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": ["*"]
+    }
+  ]
+}

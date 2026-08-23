@@ -1,0 +1,8 @@
+[Unit]
+Description=Check IPv6 connectivity and restart systemd-networkd if broken
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/check-ipv6.sh
